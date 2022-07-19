@@ -22,8 +22,6 @@
         "src/pages",
         "src/services",
         "src/utils",
-        "src/contexts",
-        "src/hooks",
         "src/assets",
         "src/assets/images"
       ]
