@@ -50,23 +50,7 @@ export default function ModalCrud({ open, setOpen }: IModalCrud) {
                             name='first-name'
                             id='first-name'
                             autoComplete='given-name'
-                            className='mt-1 w-52 h-10 focus:ring-indigo-500 focus:border-indigo-500 block  shadow-sm sm:text-sm border border-gray-400 rounded-md'
-                          />
-                        </div>
-
-                        <div className='col-span-6 sm:col-span-3'>
-                          <label
-                            htmlFor='last-name'
-                            className='block text-sm font-medium text-gray-700'
-                          >
-                            Title
-                          </label>
-                          <input
-                            type='text'
-                            name='last-name'
-                            id='last-name'
-                            autoComplete='family-name'
-                            className='mt-1 w-40 h-10 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border border-gray-400 rounded-md'
+                            className='mt-1 w-96 h-10 focus:ring-indigo-500 focus:border-indigo-500 block  shadow-sm sm:text-sm border border-gray-400 rounded-md'
                           />
                         </div>
                         <div className='col-span-6 sm:col-span-4'>
@@ -89,14 +73,14 @@ export default function ModalCrud({ open, setOpen }: IModalCrud) {
                             htmlFor='last-name'
                             className='block text-sm font-medium text-gray-700'
                           >
-                            Role
+                            Document
                           </label>
                           <input
-                            type='text'
+                            type='number'
                             name='last-name'
                             id='last-name'
                             autoComplete='family-name'
-                            className='mt-1 w-52 h-10 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border border-gray-400 rounded-md'
+                            className='mt-1 w-96 h-10 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border border-gray-400 rounded-md'
                           />
                         </div>
                       </div>
@@ -104,9 +88,9 @@ export default function ModalCrud({ open, setOpen }: IModalCrud) {
                     <div className='px-4 py-3 bg-gray-50 text-right sm:px-6'>
                       <button
                         type='submit'
-                        className='w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                        className='w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
                       >
-                        Save
+                        salvar
                       </button>
                     </div>
                   </div>
