@@ -1,22 +1,32 @@
 import { Fragment, useCallback, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import Form from '../Form/Form';
+import FormEdit from '../Form/FormEdit';
 
-interface IModalCrud {
+interface IModalEdit {
   open: boolean;
   setOpen: any;
-  createUser: any;
+  itemData: any;
+  accountId: any;
+  updateUser: any;
 }
 
-export default function ModalCrud({ open, setOpen, createUser }: IModalCrud) {
+export default function ModalCrud({
+  open,
+  setOpen,
+  accountId,
+  itemData,
+  updateUser
+}: IModalEdit) {
   const onSubmit = useCallback(async (FormData: any) => {
+    const id = accountId;
     const name = FormData.name;
     const email = FormData.email;
     const document_number = FormData.document_number;
-    createUser({
+    updateUser({
       name,
       email,
-      document_number
+      document_number,
+      id
     });
   }, []);
   return (
@@ -48,7 +58,11 @@ export default function ModalCrud({ open, setOpen, createUser }: IModalCrud) {
               <Dialog.Panel className='relative bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full sm:p-6'>
                 <div className='shadow overflow-hidden sm:rounded-md'>
                   <div className='px-4 py-5 bg-white sm:p-6'>
-                    <Form onSubmit={onSubmit} />
+                    <FormEdit
+                      onSubmit={onSubmit}
+                      accountId={accountId}
+                      itemData={itemData}
+                    />
                   </div>
                 </div>
               </Dialog.Panel>

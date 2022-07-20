@@ -1,28 +1,21 @@
+import { format, compareAsc } from 'date-fns';
+
 interface IcrudList {
-  people: any;
+  handleOpen: any;
   setOpen: any;
   getUser: {
-    data: {
-      data: [
-        {
-          id: number;
-          attributes: {
-            createdAt: any;
-            document_number: string;
-            email: string;
-            locale: 'en';
-            name: 'Jhon';
-            publishedAt: '2022-07-19T21:40:29.443Z';
-            slug: null;
-            updatedAt: '2022-07-19T21:40:29.444Z';
-          };
-        }
-      ];
+    map: any;
+    id: any;
+    attributes: {
+      createdAt: any;
+      document_number: string;
+      email: string;
+      name: string;
     };
   };
 }
 
-export default function CrudList({ people, setOpen, getUser }: IcrudList) {
+export default function CrudList({ setOpen, getUser, handleOpen }: IcrudList) {
   return (
     <div className='px-4 sm:px-6 lg:px-8'>
       <div className='sm:flex sm:items-center'>
@@ -51,7 +44,7 @@ export default function CrudList({ people, setOpen, getUser }: IcrudList) {
                       scope='col'
                       className='py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6'
                     >
-                      Name
+                      Nome
                     </th>
                     <th
                       scope='col'
@@ -63,7 +56,13 @@ export default function CrudList({ people, setOpen, getUser }: IcrudList) {
                       scope='col'
                       className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
                     >
-                      Document
+                      Documento
+                    </th>
+                    <th
+                      scope='col'
+                      className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+                    >
+                      Data de Criação
                     </th>
                     <th scope='col' className='relative py-3.5 pl-3 pr-4 sm:pr-6'>
                       <span className='sr-only'>Edit</span>
@@ -71,21 +70,29 @@ export default function CrudList({ people, setOpen, getUser }: IcrudList) {
                   </tr>
                 </thead>
                 <tbody className='divide-y divide-gray-200 bg-white'>
-                  {people.map((person: any) => (
-                    <tr key={person.email}>
+                  {getUser.map((itemData: any) => (
+                    <tr key={itemData.id}>
                       <td className='whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6'>
-                        {person.name}
+                        {itemData.attributes.name}
                       </td>
                       <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
-                        {person.email}
+                        {itemData.attributes.email}
                       </td>
                       <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
-                        {person.document}
+                        {itemData.attributes.document_number}
+                      </td>
+                      <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                        {format(new Date(itemData.attributes.createdAt), 'dd/MM/yyyy')}
                       </td>
                       <td className='relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6'>
-                        <a href='#' className='text-red-500 hover:text-red-700'>
-                          Edit<span className='sr-only'>, {person.name}</span>
-                        </a>
+                        <button
+                          type='button'
+                          onClick={() => handleOpen(itemData.id)}
+                          className='text-red-500 hover:text-red-700'
+                        >
+                          Edit
+                          <span className='sr-only'>{itemData.attributes.name}</span>
+                        </button>
                       </td>
                     </tr>
                   ))}
