@@ -1,9 +1,16 @@
-import { format, compareAsc } from 'date-fns';
+import { format } from 'date-fns';
+import { useEffect, useState } from 'react';
+import Excluir from '@/assets/img/excluir.svg';
+import Image from 'next/image';
+import axios from 'axios';
 
 interface IcrudList {
+  deleteUser: any;
+  accountId: any;
+  reponseUpdate: any;
   handleOpen: any;
   setOpen: any;
-  getUser: {
+  data: {
     map: any;
     id: any;
     attributes: {
@@ -15,7 +22,26 @@ interface IcrudList {
   };
 }
 
-export default function CrudList({ setOpen, getUser, handleOpen }: IcrudList) {
+export default function CrudList({
+  setOpen,
+  data,
+  handleOpen,
+  reponseUpdate,
+  deleteUser,
+  accountId
+}: IcrudList) {
+  const deleteId = async (id: any) => {
+    window.location.reload();
+    await axios.delete(`http://localhost:1337/api/associados/${id}`);
+  };
+  const [responseId, setResponseId] = useState(data);
+  console.log(responseId, 'id');
+  useEffect(() => {
+    data.map(
+      (itemData: any) => accountId === itemData.id && setResponseId(reponseUpdate)
+    );
+  }, [responseId]);
+
   return (
     <div className='px-4 sm:px-6 lg:px-8'>
       <div className='sm:flex sm:items-center'>
@@ -70,7 +96,7 @@ export default function CrudList({ setOpen, getUser, handleOpen }: IcrudList) {
                   </tr>
                 </thead>
                 <tbody className='divide-y divide-gray-200 bg-white'>
-                  {getUser.map((itemData: any) => (
+                  {data.map((itemData: any) => (
                     <tr key={itemData.id}>
                       <td className='whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6'>
                         {itemData.attributes.name}
@@ -90,8 +116,23 @@ export default function CrudList({ setOpen, getUser, handleOpen }: IcrudList) {
                           onClick={() => handleOpen(itemData.id)}
                           className='text-red-500 hover:text-red-700'
                         >
-                          Edit
-                          <span className='sr-only'>{itemData.attributes.name}</span>
+                          Editar
+                          <span className='sr-only'>
+                            {reponseUpdate?.attributes?.name || itemData.attributes.name}
+                          </span>
+                        </button>
+                        <button
+                          onClick={() => deleteId(itemData.id)}
+                          type='button'
+                          className='space-x-4'
+                        >
+                          <Image
+                            src={Excluir.src}
+                            width={20}
+                            height={20}
+                            className='text-red-500 items-center'
+                          />
+                          <span className='sr-only'>{deleteUser.itemData?.id}</span>
                         </button>
                       </td>
                     </tr>

@@ -1,23 +1,10 @@
-import api from '@/services/axios';
 import axios from 'axios';
-import { Children, createContext, useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 
 export const AuhtContext = createContext({});
 
 export default function AuthProvider({ children }: any) {
-  const [getUser, setGetUser] = useState<any>([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      await axios({
-        method: 'get',
-        url: 'http://localhost:1337/api/associados'
-      }).then(function (response) {
-        setGetUser(response.data.data);
-      });
-    };
-    fetchData().catch();
-  }, [getUser]);
-
+  const [reponseUpdate, setResponseUpdate] = useState({});
   async function createUser({ name, email, document_number }: any) {
     try {
       await axios({
@@ -32,6 +19,7 @@ export default function AuthProvider({ children }: any) {
         }
       });
       console.log('successo');
+      window.location.reload();
     } catch (error) {
       console.log(error);
       console.log('falha');
@@ -49,6 +37,10 @@ export default function AuthProvider({ children }: any) {
             document_number: document_number
           }
         }
+      }).then(function (response) {
+        console.log(response, 'Auth');
+        setResponseUpdate(response?.data?.data);
+        window.location.reload();
       });
       console.log('successo');
     } catch (error) {
@@ -56,8 +48,22 @@ export default function AuthProvider({ children }: any) {
       console.log('falha');
     }
   }
+  async function deleteUser({ id }: any) {
+    console.log(deleteUser, 'delete');
+    try {
+      await axios({
+        method: 'delete',
+        url: `http://localhost:1337/api/associados/${id}`
+      });
+      
+      console.log('successo');
+    } catch (error) {
+      console.log(error);
+      console.log('falha');
+    }
+  }
   return (
-    <AuhtContext.Provider value={{ getUser, createUser, updateUser }}>
+    <AuhtContext.Provider value={{ createUser, updateUser, reponseUpdate, deleteUser }}>
       {children}
     </AuhtContext.Provider>
   );

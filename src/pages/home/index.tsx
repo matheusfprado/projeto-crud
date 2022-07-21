@@ -1,28 +1,17 @@
 import Header from '@/components/common/Header/Header';
 import CrudList from '@/components/common/CrudList/CrudList';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ModalCrud from '@/components/common/ModalCrud/ModalCrud';
 import { AuhtContext } from '@/context/AuthContetx';
 import ModalEdit from '@/components/common/ModalCrud/ModalEdit';
+import axios from 'axios';
 
-// const people = [
-//   {
-//     name: 'Lindsay Walton',
-//     email: 'lindsay.walton@example.com',
-//     document: '547.745.987-01'
-//   },
-//   {
-//     name: 'Matheus Felipe do Prado',
-//     email: 'matheus.gmail@example.com',
-//     document: '444.854.854-00'
-//   }
-// ];
-
-export default function Home() {
+export default function Home({ data }: any) {
   const [openEdit, setOpenEdit] = useState(false);
   const [accountId, setAccountId] = useState(null);
   const [open, setOpen] = useState(false);
-  const { getUser, createUser, updateUser }: any = useContext(AuhtContext);
+  const { createUser, updateUser, reponseUpdate, deleteUser }: any =
+    useContext(AuhtContext);
   const handleOpen = (userId: any) => {
     setOpenEdit(!openEdit);
     setAccountId(userId);
@@ -34,11 +23,11 @@ export default function Home() {
       </div>
       <main className='max-w-7xl mx-auto pt-32'>
         <ModalCrud open={open} setOpen={setOpen} createUser={createUser} />
-        {getUser.map(
+        {data.map(
           (itemData: any) =>
             itemData.id === accountId && (
               <ModalEdit
-              updateUser={updateUser}
+                updateUser={updateUser}
                 open={openEdit}
                 setOpen={setOpenEdit}
                 itemData={itemData}
@@ -46,8 +35,22 @@ export default function Home() {
               />
             )
         )}
-        <CrudList setOpen={setOpen} getUser={getUser} handleOpen={handleOpen} />
+        <CrudList
+          setOpen={setOpen}
+          handleOpen={handleOpen}
+          data={data}
+          reponseUpdate={reponseUpdate}
+          accountId={accountId}
+          deleteUser={deleteUser}
+        />
       </main>
     </div>
   );
+}
+export async function getServerSideProps() {
+  const response = await axios({
+    method: 'get',
+    url: 'http://localhost:1337/api/associados'
+  });
+  return { props: { data: response.data.data } };
 }

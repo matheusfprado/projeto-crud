@@ -1,5 +1,8 @@
 import { Controller, useForm } from 'react-hook-form';
 import Input from '../Input/Input';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { validateCPF } from 'validations-br';
 
 interface IFormEdit {
   onSubmit: any;
@@ -8,7 +11,41 @@ interface IFormEdit {
 }
 
 export default function Form({ onSubmit, itemData, accountId }: IFormEdit) {
-  const { register, handleSubmit, control } = useForm();
+  const schema = Yup.object().shape({
+    email: Yup.string()
+      .trim()
+      .lowercase()
+      .required('email é obrigatório.')
+      .email('email não é válido.')
+      .defined(),
+    name: Yup.string().required('campo obrigatório'),
+    document_number: Yup.string()
+      .trim()
+      .required('campo é obrigatório.')
+      .test(
+        'documento não é válido.',
+        (value: any) =>
+          value !== '000.000.000-00' &&
+          value !== '111.111.111-11' &&
+          value !== '222.222.222-22' &&
+          value !== '333.333.333-33' &&
+          value !== '444.444.444-44' &&
+          value !== '555.555.555-55' &&
+          value !== '666.666.666-66' &&
+          value !== '777.777.777-77' &&
+          value !== '888.888.888-88' &&
+          value !== '999.999.999-99'
+      )
+      .test('documento não é válido.', (value: any) => validateCPF(value))
+      .matches(
+        /^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}|[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2})$/,
+        'documento não é válido.'
+      )
+  });
+  const yupOption = { resolver: yupResolver(schema) };
+  const { register, handleSubmit, control, formState } = useForm(yupOption);
+
+  const { errors } = formState;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -26,6 +63,7 @@ export default function Form({ onSubmit, itemData, accountId }: IFormEdit) {
                 name='name'
                 id='name'
                 type='text'
+                errors={errors}
               />
             )}
           />
@@ -42,6 +80,7 @@ export default function Form({ onSubmit, itemData, accountId }: IFormEdit) {
                 name='email'
                 id='email'
                 type='email'
+                errors={errors}
               />
             )}
           />
@@ -58,6 +97,7 @@ export default function Form({ onSubmit, itemData, accountId }: IFormEdit) {
                 name='document_number'
                 id='document_number'
                 type='text'
+                errors={errors}
               />
             )}
           />

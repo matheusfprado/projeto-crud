@@ -17,17 +17,19 @@ export default function ModalCrud({
   itemData,
   updateUser
 }: IModalEdit) {
+  
   const onSubmit = useCallback(async (FormData: any) => {
     const id = accountId;
     const name = FormData.name;
     const email = FormData.email;
     const document_number = FormData.document_number;
-    updateUser({
+    const response = await updateUser({
       name,
       email,
       document_number,
       id
     });
+    console.log(response, 'resposta');
   }, []);
   return (
     <Transition.Root show={open} as={Fragment}>
