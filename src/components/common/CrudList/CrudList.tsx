@@ -1,8 +1,7 @@
 import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
-import Excluir from '@/assets/img/excluir.svg';
-import Image from 'next/image';
 import axios from 'axios';
+import { CogIcon, XCircleIcon } from '@heroicons/react/outline';
 
 interface IcrudList {
   deleteUser: any;
@@ -11,13 +10,13 @@ interface IcrudList {
   handleOpen: any;
   setOpen: any;
   data: {
-    map: any;
-    id: any;
-    attributes: {
-      createdAt: any;
-      document_number: string;
-      email: string;
-      name: string;
+    map?: any;
+    id?: any;
+    attributes?: {
+      createdAt?: any;
+      document_number?: string;
+      email?: string;
+      name?: string;
     };
   };
 }
@@ -105,7 +104,7 @@ export default function CrudList({
                         {itemData.attributes.email}
                       </td>
                       <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
-                        {itemData.attributes.document_number}
+                        {format(new Date(itemData.attributes.document_number),'123.456.879-00')}
                       </td>
                       <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
                         {format(new Date(itemData.attributes.createdAt), 'dd/MM/yyyy')}
@@ -116,7 +115,9 @@ export default function CrudList({
                           onClick={() => handleOpen(itemData.id)}
                           className='text-red-500 hover:text-red-700'
                         >
-                          Editar
+                          <div className='pr-6'>
+                            <CogIcon width={20} height={20} />
+                          </div>
                           <span className='sr-only'>
                             {reponseUpdate?.attributes?.name || itemData.attributes.name}
                           </span>
@@ -124,14 +125,9 @@ export default function CrudList({
                         <button
                           onClick={() => deleteId(itemData.id)}
                           type='button'
-                          className='space-x-4'
+                          className='text-red-500 hover:text-red-700'
                         >
-                          <Image
-                            src={Excluir.src}
-                            width={20}
-                            height={20}
-                            className='text-red-500 items-center'
-                          />
+                          <XCircleIcon width={20} height={20} />
                           <span className='sr-only'>{deleteUser.itemData?.id}</span>
                         </button>
                       </td>

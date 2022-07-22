@@ -71,6 +71,7 @@ export default function Form({ onSubmit }: any) {
             id='document_number'
             type='text'
             errors={errors}
+            maxlength={11}
           />
         </div>
         <div className='pt-20 -ml-80 py-3 bg-gray-50 text-right sm:px-6'>

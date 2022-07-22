@@ -98,6 +98,7 @@ export default function Form({ onSubmit, itemData, accountId }: IFormEdit) {
                 id='document_number'
                 type='text'
                 errors={errors}
+                maxlength={11}
               />
             )}
           />

@@ -10,6 +10,7 @@ type InputProps = {
   title: string;
   errors: object | any;
   onChange?: any;
+  maxlength?: number;
 };
 
 export default function Input({
@@ -21,6 +22,7 @@ export default function Input({
   register,
   title,
   errors,
+  maxlength,
   ...props
 }: InputProps) {
   return (
@@ -32,6 +34,7 @@ export default function Input({
         <input
           {...register}
           {...props}
+          maxLength={maxlength}
           name={name}
           id={id}
           type={type}
