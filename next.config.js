@@ -1,5 +1,4 @@
-/** @type {import('next').NextConfig} */
-const withImages = require('next-images')
+//** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
@@ -8,12 +7,12 @@ const nextConfig = {
     return [
       {
         source: '/',
-        destination: 'Home',
+        destination: '/home',
         permanent: true,
-      },
+      }
     ]
   },
   
 }
 
-module.exports = nextConfig, withImages()
+module.exports = nextConfig

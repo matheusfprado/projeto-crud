@@ -3,6 +3,7 @@ import Input from '../Input/Input';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { validateCPF } from 'validations-br';
+import { toast } from 'react-toastify';
 
 interface IFormEdit {
   onSubmit: any;
@@ -11,6 +12,29 @@ interface IFormEdit {
 }
 
 export default function Form({ onSubmit, itemData, accountId }: IFormEdit) {
+  const notify = () => {
+    try {
+      toast.success('criado com ucesso', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      });
+    } catch (errors) {
+      toast.error('alguma informação incorreta', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined
+      });
+    }
+  };
   const schema = Yup.object().shape({
     email: Yup.string()
       .trim()
@@ -54,7 +78,7 @@ export default function Form({ onSubmit, itemData, accountId }: IFormEdit) {
           <Controller
             control={control}
             name='name'
-            defaultValue={itemData.attributes.name}
+            defaultValue={itemData.attributes?.name}
             render={({ field: { onChange, ...rest } }) => (
               <Input
                 register={register('name')}
@@ -72,7 +96,7 @@ export default function Form({ onSubmit, itemData, accountId }: IFormEdit) {
           <Controller
             control={control}
             name='email'
-            defaultValue={itemData.attributes.email}
+            defaultValue={itemData.attributes?.email}
             render={({ field: { onChange, ...rest } }) => (
               <Input
                 register={register('email')}
@@ -89,7 +113,7 @@ export default function Form({ onSubmit, itemData, accountId }: IFormEdit) {
           <Controller
             control={control}
             name='document_number'
-            defaultValue={itemData.attributes.document_number}
+            defaultValue={itemData.attributes?.document_number}
             render={({ field: { onChange, ...rest } }) => (
               <Input
                 register={register('document_number')}
@@ -98,13 +122,14 @@ export default function Form({ onSubmit, itemData, accountId }: IFormEdit) {
                 id='document_number'
                 type='text'
                 errors={errors}
-                maxlength={11}
+                maxlength={14}
               />
             )}
           />
         </div>
         <div className='pt-20 -ml-80 py-3 bg-gray-50 text-right sm:px-6'>
           <button
+            onClick={notify}
             type='submit'
             className='w-96 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
           >

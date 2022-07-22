@@ -29,7 +29,6 @@ export default function ModalCrud({
       document_number,
       id
     });
-    console.log(response, 'resposta');
   }, []);
   return (
     <Transition.Root show={open} as={Fragment}>

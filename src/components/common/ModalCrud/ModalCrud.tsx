@@ -2,6 +2,7 @@ import { Fragment, useCallback, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import Form from '../Form/Form';
 
+
 interface IModalCrud {
   open: boolean;
   setOpen: any;
@@ -9,6 +10,7 @@ interface IModalCrud {
 }
 
 export default function ModalCrud({ open, setOpen, createUser }: IModalCrud) {
+  
   const onSubmit = useCallback(async (FormData: any) => {
     const name = FormData.name;
     const email = FormData.email;

@@ -2,6 +2,7 @@ import { format } from 'date-fns';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { CogIcon, XCircleIcon } from '@heroicons/react/outline';
+import { ToastContainer } from 'react-toastify';
 
 interface IcrudList {
   deleteUser: any;
@@ -43,6 +44,7 @@ export default function CrudList({
 
   return (
     <div className='px-4 sm:px-6 lg:px-8'>
+      <ToastContainer />
       <div className='sm:flex sm:items-center'>
         <div className='sm:flex-auto'>
           <h1 className='text-xl font-semibold text-gray-900'>associados</h1>
@@ -104,7 +106,7 @@ export default function CrudList({
                         {itemData.attributes.email}
                       </td>
                       <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
-                        {format(new Date(itemData.attributes.document_number),'123.456.879-00')}
+                        {itemData.attributes.document_number}
                       </td>
                       <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
                         {format(new Date(itemData.attributes.createdAt), 'dd/MM/yyyy')}

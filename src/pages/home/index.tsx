@@ -2,7 +2,7 @@ import Header from '@/components/common/Header/Header';
 import CrudList from '@/components/common/CrudList/CrudList';
 import { useContext, useEffect, useState } from 'react';
 import ModalCrud from '@/components/common/ModalCrud/ModalCrud';
-import { AuhtContext } from '@/context/AuthContetx';
+import { AuhtContext } from '@/context/AuthContex';
 import ModalEdit from '@/components/common/ModalCrud/ModalEdit';
 import axios from 'axios';
 
