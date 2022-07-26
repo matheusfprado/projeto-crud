@@ -18,7 +18,7 @@ interface IFormEdit {
 export default function Form({ onSubmit, itemData, accountId, loading }: IFormEdit) {
   const notify = () => {
     try {
-      toast.success('criado com ucesso', {
+      toast.success('editado com sucesso', {
         position: 'top-right',
         autoClose: 3000,
         hideProgressBar: false,
