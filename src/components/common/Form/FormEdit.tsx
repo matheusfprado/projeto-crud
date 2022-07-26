@@ -4,14 +4,18 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { validateCPF } from 'validations-br';
 import { toast } from 'react-toastify';
+import Reload from '@/assets/img/atualizar.svg';
+import { RefreshIcon } from '@heroicons/react/outline';
+import Image from 'next/image';
 
 interface IFormEdit {
   onSubmit: any;
   itemData: any;
   accountId: any;
+  loading: any;
 }
 
-export default function Form({ onSubmit, itemData, accountId }: IFormEdit) {
+export default function Form({ onSubmit, itemData, accountId, loading }: IFormEdit) {
   const notify = () => {
     try {
       toast.success('criado com ucesso', {
@@ -128,13 +132,23 @@ export default function Form({ onSubmit, itemData, accountId }: IFormEdit) {
           />
         </div>
         <div className='pt-20 -ml-80 py-3 bg-gray-50 text-right sm:px-6'>
-          <button
-            onClick={notify}
-            type='submit'
-            className='w-96 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
-          >
-            editar
-          </button>
+          {!loading ? (
+            <button
+              onClick={notify}
+              type='submit'
+              className='w-96 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
+            >
+              editar
+            </button>
+          ) : (
+            <button
+              disabled
+              className='w-96 gap-x-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
+            >
+              salvando
+              <RefreshIcon className='w-5 h-5 animate-spin' />
+            </button>
+          )}
         </div>
       </div>
     </form>

@@ -9,7 +9,7 @@ export default function AuthProvider({ children }: any) {
     try {
       await axios({
         method: 'post',
-        url: 'http://localhost:1337/api/associados',
+        url: 'https://sleepy-waters-97406.herokuapp.com/api/associados',
         data: {
           data: {
             name: name,
@@ -29,7 +29,7 @@ export default function AuthProvider({ children }: any) {
     try {
       await axios({
         method: 'put',
-        url: `http://localhost:1337/api/associados/${id}`,
+        url: `https://sleepy-waters-97406.herokuapp.com/api/associados/${id}`,
         data: {
           data: {
             name: name,
@@ -53,9 +53,9 @@ export default function AuthProvider({ children }: any) {
     try {
       await axios({
         method: 'delete',
-        url: `http://localhost:1337/api/associados/${id}`
+        url: `https://sleepy-waters-97406.herokuapp.com/associados/${id}`
       });
-      
+
       console.log('successo');
     } catch (error) {
       console.log(error);

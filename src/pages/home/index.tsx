@@ -50,7 +50,7 @@ export default function Home({ data }: any) {
 export async function getServerSideProps() {
   const response = await axios({
     method: 'get',
-    url: 'http://localhost:1337/api/associados'
+    url: 'https://sleepy-waters-97406.herokuapp.com/api/associados'
   });
   return { props: { data: response.data.data } };
 }
