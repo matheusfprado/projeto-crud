@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useRef, useState } from 'react';
+import { Fragment, useCallback, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import FormEdit from '../Form/FormEdit';
 
@@ -17,7 +17,7 @@ export default function ModalCrud({
   itemData,
   updateUser
 }: IModalEdit) {
-  
+  const [loading, setLoading] = useState(false);
   const onSubmit = useCallback(async (FormData: any) => {
     const id = accountId;
     const name = FormData.name;
@@ -29,6 +29,7 @@ export default function ModalCrud({
       document_number,
       id
     });
+    setLoading(true)
   }, []);
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -63,6 +64,7 @@ export default function ModalCrud({
                       onSubmit={onSubmit}
                       accountId={accountId}
                       itemData={itemData}
+                      loading={loading}
                     />
                   </div>
                 </div>
