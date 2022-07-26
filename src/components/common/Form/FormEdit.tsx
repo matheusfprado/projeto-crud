@@ -126,7 +126,7 @@ export default function Form({ onSubmit, itemData, accountId, loading }: IFormEd
                 id='document_number'
                 type='text'
                 errors={errors}
-                maxlength={14}
+                maxlength={11}
               />
             )}
           />
