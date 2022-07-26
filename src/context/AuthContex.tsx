@@ -53,7 +53,7 @@ export default function AuthProvider({ children }: any) {
     try {
       await axios({
         method: 'delete',
-        url: `https://sleepy-waters-97406.herokuapp.com/associados/${id}`
+        url: `https://sleepy-waters-97406.herokuapp.com/api/associados/${id}`
       });
 
       console.log('successo');
