@@ -32,7 +32,7 @@ export default function CrudList({
 }: IcrudList) {
   const deleteId = async (id: any) => {
     window.location.reload();
-    await axios.delete(`http://localhost:1337/api/associados/${id}`);
+    await axios.delete(`https://sleepy-waters-97406.herokuapp.com/api/associados/${id}`);
   };
   const [responseId, setResponseId] = useState(data);
   console.log(responseId, 'id');
