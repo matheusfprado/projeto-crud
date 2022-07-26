@@ -113,7 +113,7 @@ export default function Form({ onSubmit, loading }: any) {
           ) : (
             <button
               disabled
-              className='block w-full h-9 rounded-md  border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
+              className='block w-full h-9 rounded-md border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
             >
               salvando
               <RefreshIcon className='w-5 h-5 animate-spin' />
