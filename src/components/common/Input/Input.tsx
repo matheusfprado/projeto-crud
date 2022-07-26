@@ -40,7 +40,7 @@ export default function Input({
           type={type}
           value={value}
           placeholder={placeholder}
-          className='block w-96 h-9 rounded-md px-2 border'
+          className='block w-full h-9 rounded-md px-2 border'
         />
       </div>
       <p className='absolute mt-2 text-sm text-gray-600 '>
