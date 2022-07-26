@@ -70,7 +70,7 @@ export default function Form({ onSubmit, loading }: any) {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='grid grid-cols-6 gap-6'>
+        <div className='grid grid-cols-0 gap-6'>
           <div className='col-span-6 sm:col-span-4'>
             <Input
               register={register('name')}
@@ -102,25 +102,23 @@ export default function Form({ onSubmit, loading }: any) {
               maxlength={11}
             />
           </div>
-          <div className='pt-20 -ml-80 py-3 bg-gray-50 text-right sm:px-6'>
-            {!loading ? (
-              <button
-                onClick={notify}
-                type='submit'
-                className='w-96 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
-              >
-                salvar
-              </button>
-            ) : (
-              <button
-                disabled
-                className='w-96 gap-x-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
-              >
-                salvando
-                <RefreshIcon className='w-5 h-5 animate-spin' />
-              </button>
-            )}
-          </div>
+          {!loading ? (
+            <button
+              onClick={notify}
+              type='submit'
+              className='block w-full h-9 px-10 rounded-md border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
+            >
+              salvar
+            </button>
+          ) : (
+            <button
+              disabled
+              className='block w-full h-9 rounded-md  border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
+            >
+              salvando
+              <RefreshIcon className='w-5 h-5 animate-spin' />
+            </button>
+          )}
         </div>
       </form>
     </>
