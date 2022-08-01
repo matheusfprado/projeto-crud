@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import Reload from '@/assets/img/atualizar.svg';
 import { RefreshIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
+import InputMask from '../Input/InputMask';
 
 interface IFormEdit {
   onSubmit: any;
@@ -119,14 +120,14 @@ export default function Form({ onSubmit, itemData, accountId, loading }: IFormEd
             name='document_number'
             defaultValue={itemData.attributes?.document_number}
             render={({ field: { onChange, ...rest } }) => (
-              <Input
+              <InputMask
+                mask={'999.999.999-99'}
                 register={register('document_number')}
                 title='Documento'
                 name='document_number'
                 id='document_number'
                 type='text'
                 errors={errors}
-                maxlength={11}
               />
             )}
           />
@@ -145,7 +146,7 @@ export default function Form({ onSubmit, itemData, accountId, loading }: IFormEd
             className='block w-full h-9 px-10 rounded-md border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
           >
             salvando
-            <RefreshIcon className='w-5 h-5 animate-spin' />
+            <RefreshIcon className='w-5 h-5 animate-spin -mt-5 -ml-2' />
           </button>
         )}
       </div>

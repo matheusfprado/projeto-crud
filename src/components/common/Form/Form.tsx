@@ -6,6 +6,7 @@ import { validateCPF } from 'validations-br';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { RefreshIcon } from '@heroicons/react/outline';
+import InputMask from '../Input/InputMask';
 
 export default function Form({ onSubmit, loading }: any) {
   const notify = () => {
@@ -92,14 +93,14 @@ export default function Form({ onSubmit, loading }: any) {
             />
           </div>
           <div className='col-span-6 sm:col-span-4'>
-            <Input
+            <InputMask
+              mask='999.999.999-99'
               register={register('document_number')}
               title='Documento'
               name='document_number'
               id='document_number'
-              type='text'
+              type='te'
               errors={errors}
-              maxlength={11}
             />
           </div>
           {!loading ? (
@@ -113,10 +114,10 @@ export default function Form({ onSubmit, loading }: any) {
           ) : (
             <button
               disabled
-              className='block w-full h-9 rounded-md border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
+              className='block w-full h-9 px-10  rounded-md border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
             >
               salvando
-              <RefreshIcon className='w-5 h-5 animate-spin' />
+              <RefreshIcon className='w-5 h-5 animate-spin -mt-5 -ml-2' />
             </button>
           )}
         </div>
