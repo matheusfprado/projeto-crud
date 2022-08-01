@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Projeto Crud
 
-## Getting Started
+CRUD é uma abreviação para Create (criar), Read (ler), Update (atualizar) e Delete (apagar). Dá para perceber que o CRUD é uma sequência de funções de um sistema que trabalha com banco de dados ou seja ele na sua máquina ou na nuvem.
 
-First, run the development server:
+# O que significa cada siglas
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+\*Create
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Nada mais é que um conceito de criação, registro ou cadastro de informações e dados em um determinado lugar. Sendo assim, pode se referir à criação de dados de uma tabela, ao registro do usuário numa plataforma ou até mesmo ao desenvolvimento de um novo post dentro de um blog.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+\*Read
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+É o que consulta os dados em um website. Quando você clica no botão 'exibir' por exemplo, você está solicitando dados que serão lidos pela plataforma e, na sequência, exibidos na tela.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+\*Update
 
-## Learn More
+O update é usado quando, o dono dos dados tem permissão para editá-los, atualiza as informações que ele deseja. O diferencial com relação aos outros processos é a limitação de uso, que é voltada para quem criou os dados na tabela ou aplicação, bem como por quem tem a permissão do sistema para atualizá-los.
 
-To learn more about Next.js, take a look at the following resources:
+\*Delete
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+E uma ação de remoção de dados a partir do operador do sistema, assim como o Update, tem algumas limitações. Ao pedir a exclusão do seu nome da lista de e-mail marketing de uma empresa, por exemplo, você precisa da intermediação do operador que vai permitir a deleção de dados, ou seja, não pode fazer isso diretamente.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Tecnologia usadas 
 
-## Deploy on Vercel
+# Next.js
+# Strapi
+# Tailwind
+# TypeScript
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+

@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import Reload from '@/assets/img/atualizar.svg';
 import { RefreshIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
+import InputMask from '../Input/InputMask';
 
 interface IFormEdit {
   onSubmit: any;
@@ -77,7 +78,7 @@ export default function Form({ onSubmit, itemData, accountId, loading }: IFormEd
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className='grid grid-cols-6 gap-6'>
+      <div className='grid grid-cols-0 gap-6'>
         <div className='col-span-6 sm:col-span-4'>
           <Controller
             control={control}
@@ -119,37 +120,35 @@ export default function Form({ onSubmit, itemData, accountId, loading }: IFormEd
             name='document_number'
             defaultValue={itemData.attributes?.document_number}
             render={({ field: { onChange, ...rest } }) => (
-              <Input
+              <InputMask
+                mask={'999.999.999-99'}
                 register={register('document_number')}
                 title='Documento'
                 name='document_number'
                 id='document_number'
                 type='text'
                 errors={errors}
-                maxlength={11}
               />
             )}
           />
         </div>
-        <div className='pt-20 -ml-80 py-3 bg-gray-50 text-right sm:px-6'>
-          {!loading ? (
-            <button
-              onClick={notify}
-              type='submit'
-              className='w-96 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
-            >
-              editar
-            </button>
-          ) : (
-            <button
-              disabled
-              className='w-96 gap-x-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
-            >
-              salvando
-              <RefreshIcon className='w-5 h-5 animate-spin' />
-            </button>
-          )}
-        </div>
+        {!loading ? (
+          <button
+            onClick={notify}
+            type='submit'
+            className='block w-full h-9 px-10 rounded-md border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
+          >
+            editar
+          </button>
+        ) : (
+          <button
+            disabled
+            className='block w-full h-9 px-10 rounded-md border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
+          >
+            salvando
+            <RefreshIcon className='w-5 h-5 animate-spin -mt-5 -ml-2' />
+          </button>
+        )}
       </div>
     </form>
   );
