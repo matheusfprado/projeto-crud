@@ -120,8 +120,7 @@ export default function Form({ onSubmit, itemData, accountId, loading }: IFormEd
             name='document_number'
             defaultValue={itemData.attributes?.document_number}
             render={({ field: { onChange, ...rest } }) => (
-              <InputMask
-                mask={'999.999.999-99'}
+              <Input
                 register={register('document_number')}
                 title='Documento'
                 name='document_number'
@@ -129,6 +128,15 @@ export default function Form({ onSubmit, itemData, accountId, loading }: IFormEd
                 type='text'
                 errors={errors}
               />
+              // <InputMask
+              //   mask={'999.999.999-99'}
+              //   register={register('document_number')}
+              //   title='Documento'
+              //   name='document_number'
+              //   id='document_number'
+              //   type='text'
+              //   errors={errors}
+              // />
             )}
           />
         </div>
