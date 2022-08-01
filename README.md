@@ -1,8 +1,8 @@
-## Projeto Crud
+# Projeto Crud
 
 CRUD é uma abreviação para Create (criar), Read (ler), Update (atualizar) e Delete (apagar). Dá para perceber que o CRUD é uma sequência de funções de um sistema que trabalha com banco de dados ou seja ele na sua máquina ou na nuvem.
 
-# O que significa cada siglas
+## O que significa cada siglas
 
 \*Create
 
@@ -20,12 +20,12 @@ O update é usado quando, o dono dos dados tem permissão para editá-los, atual
 
 E uma ação de remoção de dados a partir do operador do sistema, assim como o Update, tem algumas limitações. Ao pedir a exclusão do seu nome da lista de e-mail marketing de uma empresa, por exemplo, você precisa da intermediação do operador que vai permitir a deleção de dados, ou seja, não pode fazer isso diretamente.
 
-## Tecnologia usadas 
+# Tecnologia usadas
 
-# Next.js
-# Strapi
-# Tailwind
-# TypeScript
+## Next.js
 
+## Strapi
 
+## Tailwind
 
+## TypeScript

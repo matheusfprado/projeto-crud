@@ -93,7 +93,15 @@ export default function Form({ onSubmit, loading }: any) {
             />
           </div>
           <div className='col-span-6 sm:col-span-4'>
-            <InputMask
+            <Input
+              register={register('document_number')}
+              title='Documento'
+              name='document_number'
+              id='document_number'
+              type='text'
+              errors={errors}
+            />
+            {/* <InputMask
               mask='999.999.999-99'
               register={register('document_number')}
               title='Documento'
@@ -101,7 +109,7 @@ export default function Form({ onSubmit, loading }: any) {
               id='document_number'
               type='te'
               errors={errors}
-            />
+            /> */}
           </div>
           {!loading ? (
             <button
